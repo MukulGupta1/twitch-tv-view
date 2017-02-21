@@ -3,7 +3,10 @@ function loadDoc(channel_id) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      var obj = JSON.parse(this.responseText);
-     if(obj.stream.channel.url != null){
+     if(obj.stream == null){
+       $('#'+channel_id).prepend('<span class="label label-danger" style="float:right; margin-bottom:10">OFFLINE</span>');
+     }
+     else if(obj.stream.channel.url != null){
         console.log(obj.stream.channel.url);
         $('#'+channel_id + ' h4').html('<a href='+'"'+obj.stream.channel.url+'">'+$('#'+channel_id + ' h4').html()+'</a>');
         $('#'+channel_id).prepend('<span class="label label-success" style="float:right; margin-bottom:10">LIVE</span>');
