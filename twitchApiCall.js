@@ -5,8 +5,9 @@ function loadDoc(channel_id) {
      var obj = JSON.parse(this.responseText);
      if(obj.stream.channel.url != null){
         console.log(obj.stream.channel.url);
-        $('#'+channel_id).html('<a href='+'"'+obj.stream.channel.url+'">'+$('#'+channel_id).html()+'</a>');
-        $('#'+channel_id).append('<span class="label label-success" style="float:right">LIVE</span>');
+        $('#'+channel_id + ' h4').html('<a href='+'"'+obj.stream.channel.url+'">'+$('#'+channel_id + ' h4').html()+'</a>');
+        $('#'+channel_id).prepend('<span class="label label-success" style="float:right; margin-bottom:10">LIVE</span>');
+        $('#'+channel_id + ' p').html(obj.stream.channel.status);
      }
     }
   };
